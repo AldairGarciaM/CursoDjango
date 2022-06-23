@@ -4,18 +4,69 @@
 
     <title> {% block titulo %} {% endblock %} </title>
 
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'contenido/css/main.css' %}" />
+    <script src="https://kit.fontawesome.com/bffc2f26a2.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
 </head>
 <body>
     <!--Menu-->
-    <a href="{% url 'Principal' %}"> Home </a>
-    <a href= "{% url 'Cursos' %}"> Cursos </a>
-    <a href= "{% url 'Contacto' %}"> Contacto </a>
+    <div id="header">
+        <div class="top">
+            <nav id="nav">
+                <div id="logo">
+                    <span><img src="{% static 'contenido/images/usuario.png' %}"  width="50" height="50"/></span>
+                    <h1 id="title">Usuario</h1>
+                    <p>Desarrollador Web</p>
+                </div><hr>
 
+                <ul>
+                    <li><a href="{% url 'Principal' %}" id="top-link"><span class="icon solid fa-home">Home</span></a></li><hr>
+					<li><a href="{% url 'Cursos' %}" id="portfolio-link"><span class="icon solid fa-th">Cursos</span></a></li><hr>
+					<li><a href="{% url 'Contacto' %}" id="contact-link"><span class="icon solid fa-envelope">Contacto</span></a></li><hr>
+                </ul>
+            </nav>
+        </div>
+        <div class="bottom">
+            <ul class="icons">
+                <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                <li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                <li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+                <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+            </ul>
+        </div>
+    </div>
 
-    <!--Bloque de todo el contenido-->
-    {% block contenido %}
-
-    {% endblock %}
+  
+    <div id="main">
+        {% block cabeza%}
+        {% endblock %}
+    
+        <div class="breadCrumb-line">
+            <ul class="breadCrumb">
+                <a href="{% url 'Principal' %}">
+                    {% if request.path == '/' %}
+                        <span>Principal</span>
+                    {% else %}
+                        Principal{{request.path}}
+                    {% endif %}
+                </a>
+            </ul>
+        </div>
+    
+        <!--Bloque de todo el contenido-->
+        {% block contenido %}
+        {% endblock %}
+    </div>
 
 </body>
 </html>
