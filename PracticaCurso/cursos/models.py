@@ -1,8 +1,10 @@
+from distutils.command.upload import upload
 from django.db import models
 
 # Create your models here.
 
 class Cursos(models.Model):
+    imagen= models.ImageField(null=True, upload_to="fotos",verbose_name="Imagen")
     nombre= models.TextField(default=True, verbose_name="Nam")
     creador= models.TextField(default=True, verbose_name="crea")
     requisitos= models.TextField(default=True, verbose_name="req")

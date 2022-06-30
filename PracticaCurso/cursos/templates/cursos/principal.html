@@ -21,7 +21,7 @@
         <div class="container">
             <p> Tabla de contenido</p>
         
-            <table>
+            <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>Imagen</th>
@@ -35,15 +35,17 @@
                 </thead>
 
                 <tbody>
+                    {% for curso in cursos %}
                     <tr>
-                        <td class="text-center"><img src=" " alt="" class="img-media"></td>
-                        <td class="text-semibold">Dibujo Digital</td>
-                        <td>Jose Luis</td>
-                        <td>Laptop con tarjeta grafica</td>
-                        <td>Inicio con la animacion digital desde lo basico</td>
-                        <td>$700</td>
-                        <td>23/06/2022</td>
+                        <td class="text-center"><img src="{{curso.image.url}}" alt="" class="img-media"></td>
+                        <td class="text-semibold">{{curso.nombre}}</td>
+                        <td class="muted">{{curso.creador}}</td>
+                        <td class="muted">{{curso.requisitos}}</td>
+                        <td class="muted">{{curso.descripcion}}</td>
+                        <td class="muted">${{curso.precio}}</td>
+                        <td class="muted">{{curso.creacion}}</td>
                     </tr>
+                    {% endfor %}
                 </tbody>
             </table>
             
