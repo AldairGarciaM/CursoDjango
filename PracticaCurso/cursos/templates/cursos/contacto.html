@@ -20,13 +20,14 @@
     <section id="contact" class="four">
         <div class="container">
 
-            <form method="post" action="#">
+            <form action="{% url 'Registrar' %}" method="POST" role="form">
+                {% csrf_token %}
                 <div class="row">
-                    <div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Nombre" /></div>
-                    <div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Correo Electronico" /></div>
+                    <div class="col-6 col-12-mobile"><input type="text" name="nombre" placeholder="Nombre" /></div>
+                    <div class="col-6 col-12-mobile"><input type="text" name="correo" placeholder="Correo Electronico" /></div>
                     <div class="col-6 align-self-center"> 
-                        <select name="curso">
-                            <option> ------------------Elije un curso------------------</option>
+                        <select name="curos">
+                            <option> ------------------Toca para elegir un curso------------------</option>
                             <option> Base de datos </option>
                             <option> Programacion </option>
                             <option> Animacion digital </option>
@@ -36,7 +37,7 @@
                     </div>
 
                     <div class="col-12">
-                        <textarea name="message" placeholder="Comentario"></textarea>
+                        <textarea name="comentario" placeholder="Comentario"></textarea>
                     </div>
                     <div class="col-12">
                         <input type="submit" value="Compartir Mensaje" />

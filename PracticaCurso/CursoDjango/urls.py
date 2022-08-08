@@ -23,7 +23,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views_cursos.cursos, name="Principal"),
     path('cursos/', views.cursos, name="Cursos"),
-    path('contacto/', views.contacto, name="Contacto"),
+    path('contacto/', views_cursos.contacto, name="Contacto"),
+    path('registrar/', views_cursos.registrar, name="Registrar"),
+    path('comentarios/', views_cursos.mensajes, name="Comentarios"),
+    path('eliminar/<int:id>', views_cursos.eliminarMensaje, name="Eliminar"),
+    path('subir/', views_cursos.archivos, name="Subir"),
+   
+    
 ]
 
 if settings.DEBUG:

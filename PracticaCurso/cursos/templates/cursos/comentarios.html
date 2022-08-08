@@ -1,0 +1,48 @@
+<!--Importamos la plantilla a utilizar-->
+{% extends "contenido/plantilla.html" %}
+
+<!--Bloque de titulo-->
+{%block titulo %}
+    Comentarios 
+{% endblock %}
+
+{% block cabeza%}
+    <section id="contact" class="four">
+        <div class="container">
+            <header> <h2>Comentarios registrados</h2> </header>
+            <p> Vista de comentarios</p> 
+        </div>
+    </section>
+{% endblock%}
+
+<!--Contenido-->
+{% block contenido %}
+    <section id="contact" class="four">
+        <div class="container">
+            <p> Tabla de comentarios</p>
+        
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Mensaje</th>
+                        <th>Edicion</th>
+                        <th>Borrar</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for comenta in mensajes %}
+                    <tr>
+                        <td class="text-semibold">{{comenta.nombre}}</td>
+                        <td>{{comenta.comentario}}</td>
+                        <td><a href="">Editar</input></td>
+                        <td><a href="{% url "Eliminar" comenta.id %}">Eliminar</input></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+        </div>
+    </section>
+{% endblock %}

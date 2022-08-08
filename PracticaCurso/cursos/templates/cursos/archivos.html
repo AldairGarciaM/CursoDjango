@@ -1,0 +1,42 @@
+{% extends "contenido/plantilla.html" %}
+
+
+{%block titulo %}
+    Subir Archivo
+{% endblock %}
+
+{% block cabeza%}
+<section id="contact" class="four">
+    <div class="container">
+        <header>
+            <h2>Subir Archivo</h2>
+        </header>
+    </div>
+</section>
+{% endblock%}
+
+{% block contenido %}
+    <section id="contact" class="four">
+        <div class="container">
+
+            <form action="{% url 'Subir' %}"  method="POST" role="form" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-6 col-12-mobile">
+                        <label>Titulo:</label>
+                        <input type="text" name="titulo" class="form-control"/></div>
+                    <div class="col-12">
+                        <label>Descripcion:</label>
+                        <textarea name="descripcion" class="form-control"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <input type="file" name="archivo"/>
+                    </div>
+                    <div class="col-12">
+                        <input type="submit" value="Subir Archivo" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}
